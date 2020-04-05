@@ -1,0 +1,19 @@
+{
+    "name": "cards-against-humanity",
+    "version": "0.0.1",
+    "description": "Online Playable Cards Against Humanity. Adapted from my Absurd Box during quarantine.",
+    "main": "index.js",
+    "scripts": {
+        "test": "jest",
+        "test:watch": "jest --watchAll"
+    },
+    "keywords": [
+        "games",
+        "javascript"
+    ],
+    "author": "Justin Dunham",
+    "license": "ISC",
+    "devDependencies": {
+        "prettier": "^2.0.2"
+    }
+}

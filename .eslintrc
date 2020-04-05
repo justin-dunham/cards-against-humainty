@@ -1,0 +1,95 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true,
+    "jest": true
+  },
+  "extends": [
+    "airbnb",
+    "eslint:recommended",
+    "prettier",
+    "prettier/react",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly",
+    "Blog": true,
+    "document": true,
+    "FormData": true,
+    "FileReader": true,
+    "localStorage": true,
+    "navigator": true,
+    "window": true
+  },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "project": "./tsconfig.json",
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "plugins": ["react", "prettier", "react-hooks"],
+  "rules": {
+    "import/named": 2,
+    "import/no-unresolved": 0,
+    "import/extensions": 0,
+    "import/no-extraneous-dependencies": 0,
+    "no-console": "warn",
+    // disallow class components
+    "react/prefer-stateless-function": [2, {
+      "ignorePureComponents": true
+    }],
+    // spread props not war
+    "react/jsx-props-no-spreading": 0,
+    // allow jsx in .js files
+    "react/jsx-filename-extension": [
+      "error",
+      {
+        "extensions": [".ts", ".tsx"]
+      }
+    ],
+    // all prettier file errors
+    "prettier/prettier": "error",
+    // turn off propType validation
+    "react/prop-types": 0,
+    // turn off button type checking
+    "react/button-has-type": 0,
+    // allow array indexes be react keys
+    "react/no-array-index-key": 0,
+
+    //formLabel
+    "jsx-a11y/label-has-for": [
+      2,
+      {
+        "components": ["Label"],
+        "required": {
+          "some": ["nesting", "id"]
+        },
+        "allowChildren": true
+      }
+    ],
+    "jsx-a11y/label-has-associated-control": [
+      "error",
+      {
+        "required": {
+          "some": ["nesting", "id"]
+        }
+      }
+    ],
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "@typescript-eslint/ban-ts-ignore": 1,
+    "@typescript-eslint/no-explicit-any": 0,
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": ["src"],
+        "extensions": [".js", ".ts", ".tsx"]
+      }
+    }
+  }
+}
