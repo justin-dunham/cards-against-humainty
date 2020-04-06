@@ -1,11 +1,12 @@
 const cards = require('../decks/base.json');
 
-const Game = require('.');
+const Game = require('./game');
 const game = new Game();
 
 const player1 = 'Justin';
 const player2 = 'Nicole';
 const player3 = 'Colin';
+const player4 = 'Allison';
 
 describe('Game', () => {
     it('adds players', () => {
@@ -51,5 +52,13 @@ describe('Game', () => {
         const turn = game.submitAnswer(player1, [answer]);
 
         expect(turn.cards.find((a) => a === answer)).toBe(undefined);
+    });
+
+    it('picks a winner', () => {
+        expect(game.pickWinner(0).winner).toBe(player1);
+    });
+
+    it('advances turns', () => {
+        console.log(game.nextTurn());
     });
 });

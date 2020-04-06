@@ -1,19 +1,20 @@
-const questions = require('../decks/base_questions.json');
-const answers = require('../decks/base.json');
+const { answers, questions } = require('../decks/base.json');
 const { shuffle, answerSlots } = require('./util');
 
 class Game {
     constructor(params) {
-        this.questions = [...questions.cards].sort(shuffle).sort(shuffle);
-        this.answers = [...answers.cards].sort(shuffle).sort(shuffle);
+        this.questions = [...questions].sort(shuffle).sort(shuffle);
+        this.answers = [...answers].sort(shuffle).sort(shuffle);
         this.players = [];
         this.activePlayer = 0;
-        this.round = {
+        this.newRound = {
             player: '',
             question: '',
-            answers: [{ player: '', answer: [''] }],
+            answers: [],
             winner: '',
         };
+        this.round = { ...this.newRound };
+        this.history = [];
 
         // bound functions
         this.addPlayer = this.addPlayer.bind(this);
@@ -91,8 +92,14 @@ class Game {
         return this.round.answers.map((answers) => answers.answer);
     }
 
-    pickWinner(answers) {
-        this.round.winner = this.round.answers.find((answer) => answer.answer === answers).player;
+    pickWinner(answerIndex) {
+        this.round.winner = this.round.answers[answerIndex].player;
+
+        // tick score
+        const id = this.getPlayerId(this.round.winner);
+        this.players[id].score++;
+
+        return this.round;
     }
 
     startGame() {
@@ -100,19 +107,22 @@ class Game {
     }
 
     nextTurn() {
-        if (this.getWinner()) {
+        // for the archives
+        this.history.push({ ...this.round });
+
+        if (this.getGameWinner()) {
             // end game
             return false;
         }
 
         // normal turn actions
         this.getNextPlayer();
-        this.players[this.activePlayer].question = this.drawQuestion();
 
-        this.round.player = this.players[this.activePlayer].name;
-        this.round.question = this.players[this.activePlayer].question;
-
-        this.players[this.activePlayer].question = this.drawQuestion();
+        this.round = {
+            ...this.newRound,
+            player: this.players[this.activePlayer].name,
+            question: this.drawQuestion(),
+        };
     }
 
     getNextPlayer() {
@@ -124,7 +134,7 @@ class Game {
         return this.activePlayer;
     }
 
-    getWinner() {
+    getGameWinner() {
         return this.players.find((player) => player.score >= 10);
     }
 }

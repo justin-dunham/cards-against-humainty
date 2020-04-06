@@ -1,5 +1,22 @@
 {
-    "cards": [
+    "questions": [
+        "In bookstores now: \"From _ to _: A memoir.\".",
+        "It's finally happening! I'm finally doing it! Yes! it's time for _!",
+        "Goodbye _, hello _!",
+        "I so drunk I _.",
+        "Seriously guys, there's nothing funny about _.",
+        "Say it loud! I'm _ and I'm proud!",
+        "Millions of copies sold! Donald Trump's \"The Art of _.\"",
+        "It's the 21st century. A woman shouldn't have to apologize for _.",
+        "What's up, YouTube? User DanTheMan wanted to see _ so here we go.",
+        "You can call me David Copperield, because I'm about to make _ disappear.",
+        "I have solved politics. My solution is _.",
+        "Personal foul: _ 15 yard penalty. Automatic first down.",
+        "Rub a dub dub, _ in a tub.",
+        "Hey, honey. For the bedroom, were you thinking \"Robin's Egg Blue\" or \"_\" Pink?",
+        "What's secretly a Russian plot to destabilize the West?"
+    ],
+    "answers": [
         "My Math Teacher's Bulge.",
         "A button that when you press it, there's jazz.",
         "Three men and three hot dogs.",
